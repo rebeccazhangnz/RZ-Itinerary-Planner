@@ -74,11 +74,9 @@ Build an itinerary planner App that allows user to create, modify, save and reca
          adventure     database
 
 3. jquery drag and drop 
-
-Homepage : animation text - "Where your journey begins..."
-User should be able to drag and drop to change the position of the events in the itinerary page.
+    - Homepage : animation text - "Where your journey begins..."
+    - User should be able to drag and drop to change the position of the events in the itinerary page.
 
 4. API: 
-
-google map api
-weather api
+   - google map api
+   - weather api
