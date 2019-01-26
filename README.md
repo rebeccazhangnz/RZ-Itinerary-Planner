@@ -1,6 +1,6 @@
 # RZ-Itinerary-Planner
 
-Build an intinerary planner App that allows user to create, modify, save and recall their intenerary.
+Build an itinerary planner App that allows user to create, modify, save and recall their itinerary.
 
 ## Boilerplate
 
@@ -21,7 +21,7 @@ Build an intinerary planner App that allows user to create, modify, save and rec
 1. Install dependencies:
 ```
 - yarn init
-- yarn add express express-handlebars knex sqlite3 jquery
+- yarn add express express-handlebars body-parser knex sqlite3 jquery
 - yarn add nodemon jest supertest cheerio --dev
 ```
 
@@ -51,3 +51,34 @@ Build an intinerary planner App that allows user to create, modify, save and rec
     useNullAsDefault: true
   }
   ```
+
+## Project-Preparation
+- Setup basic file structures (routes,public,tests...)
+- Create HTML template (draft up ideas)
+
+## MVP
+- User should be able to add event to the itinerary
+- User should be able to remove event from the itinerary
+- User should be able to view all the events in the itinerary page
+
+## Stretchs:
+
+1. User should be able to choose date and time for each event and the events should be sorted by time.
+
+2. Pre-seed database: user should be able to open a packing cheklist when they clicks the 'Travel Packing Checklist' buttons.
+	 a. bagage checklist (partial hbs + 5 pre-seed table)
+         short trip database
+         long trip  database	
+         summer/beach  database	
+         winter        database
+         adventure     database
+
+3. jquery drag and drop 
+
+Homepage : animation text - "Where your journey begins..."
+User should be able to drag and drop to change the position of the events in the itinerary page.
+
+4. API: 
+
+google map api
+weather api
