@@ -2,7 +2,7 @@
 
 Build an intinerary planner App that allows user to create, modify, save and recall their intenerary.
 
-# Boilerplate
+## Boilerplate
 
  - Express
  - Express Handlebars
