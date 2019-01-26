@@ -65,7 +65,9 @@ Build an itinerary planner App that allows user to create, modify, save and reca
 
 1. User should be able to choose date and time for each event and the events should be sorted by time.
 
-2. Pre-seed database: user should be able to open a packing cheklist when they clicks the 'Travel Packing Checklist' buttons.
+2. Users should be able to create a user profile and save their itineraries on their profile page. 
+
+3. Pre-seed database: user should be able to open a packing cheklist when they clicks the 'Travel Packing Checklist' buttons.
 	 a. bagage checklist (partial hbs + 5 pre-seed table)
          short trip database
          long trip  database	
@@ -73,10 +75,11 @@ Build an itinerary planner App that allows user to create, modify, save and reca
          winter        database
          adventure     database
 
-3. jquery drag and drop 
+4. jquery drag and drop 
     - Homepage : animation text - "Where your journey begins..."
     - User should be able to drag and drop to change the position of the events in the itinerary page.
 
-4. API: 
+5. API: 
    - google map api
    - weather api
+
