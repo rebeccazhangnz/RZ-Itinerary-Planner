@@ -68,7 +68,8 @@ Build an itinerary planner App that allows user to create, modify, save and reca
 2. Users should be able to create a user profile and save their itineraries on their profile page. 
 
 3. Pre-seed database: user should be able to open a pre-loaded checklist when they clicks the 'Travel Packing Checklist' buttons.
-    bagage checklist (partial hbs + 5 pre-seed table)
+
+bagage checklist (partial hbs + 5 pre-seed table)
       - short trip database
       - long trip  database	
       - summer/beach  database	
