@@ -1,0 +1,107 @@
+body {
+    background:black;
+}
+
+.landingImg{
+    position: fixed;
+    object-fit: cover;
+    width:50vw;
+    height: 100vh;
+    left: 0;
+    top: 0;
+}
+
+.appContainer{
+    position:fixed;
+    background-color:rgba(255, 255, 255, 0.15);
+    left:52vw;
+    top:30vh;
+    width:45vw;
+    height:45vh;
+}
+
+.appSologan{
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 2vmin;
+    text-transform: capitalize;
+    line-height: 1;
+    letter-spacing: 2px;
+    background-color:rgba(255, 255, 255, 0);
+    color:gray;
+    position: fixed;
+    left: 55vw;
+    top:30vh;
+    -webkit-animation: fadein 3s; /* Safari, Chrome and Opera > 12.1 */
+    -moz-animation: fadein 3s; /* Firefox < 16 */
+
+}
+.appName{
+    font-family: 'Staatliches', cursive;
+    font-size: 30px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    background-color:rgba(255, 255, 255, 0);
+    color:gray;
+    position: fixed;
+    left: 55vw;
+    top:38vh;
+    -webkit-animation: fadein 3s; /* Safari, Chrome and Opera > 12.1 */
+    -moz-animation: fadein 3s; /* Firefox < 16 */
+}
+
+
+.appInfo{
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.6vmin;
+    line-height: 1.8;
+    font-weight: 300;
+    margin-bottom: 2.5vmin;
+    background-color:rgba(255, 255, 255, 0);
+    color:gray;
+    position: fixed;
+    width:40vw;
+    left: 55vw;
+    top:45vh;
+    -webkit-animation: fadein 3s; /* Safari, Chrome and Opera > 12.1 */
+    -moz-animation: fadein 3s; /* Firefox < 16 */
+}
+
+.signin{
+    position: fixed;
+    left:55vw;
+    top:55vh;
+    color:gray;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.6vmin;
+    line-height: 1.8;
+    font-weight: 300;
+    margin-bottom: 2.5vmin;
+    -webkit-animation: fadein 3s; /* Safari, Chrome and Opera > 12.1 */
+    -moz-animation: fadein 3s; /* Firefox < 16 */
+}
+
+.signup{
+    position: fixed;
+    left:55vw;
+    top:58vh;
+    color:gray;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.6vmin;
+    line-height: 1.8;
+    font-weight: 300;
+    margin-bottom: 2.5vmin;
+    -webkit-animation: fadein 3s; /* Safari, Chrome and Opera > 12.1 */
+    -moz-animation: fadein 3s; /* Firefox < 16 */
+}
+
+
+@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+    }
+  /* Firefox < 16 */
+@-moz-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
