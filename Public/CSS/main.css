@@ -1,4 +1,9 @@
-body {
+/* *{
+    border-style: solid;
+    border-width: 1px;
+} */
+
+.indexBody {
     background:black;
 }
 
@@ -105,3 +110,94 @@ body {
     from { opacity: 0; }
     to   { opacity: 1; }
   }
+
+/* Sign Up page CSS */
+
+.signUpPage{
+    background-image:url('/Images/signup-bg.jpg');
+    background-size: 100vw 100vh;
+}
+
+.signUpWrapper{
+    position: fixed;
+    left:37.5vw;
+    top:12.5vw;
+    width: 350px;;
+    height: 420px;
+    background-color: rgba(255, 255, 255, 0.349);
+    border-radius: 8px;
+}
+
+.signUpHeader{
+    position: relative;
+    left:10px;
+    top:5px;
+    font-size: 30px;
+    color: gray;
+    margin: 0px 0px 30px 0px;
+    
+}
+
+.signUpForm {
+    position: relative;
+    left:30px;
+    width:300px;
+    height: 350px;
+    
+}
+
+.inputDiv{
+    margin:3px;
+    height:60px;
+}
+
+.inputDiv p{
+    margin-top:0px;
+    margin-bottom: 3px;
+    font-size: 20px;
+    color: gray;
+   
+}
+
+.inputDiv input{
+    border-style: none;
+    border-bottom: solid;
+    border-width: 1px;
+    border-color: gray;
+    background-color: transparent;
+    font-size:14px;
+    margin-top: 5px;
+    margin-bottom: 0px;
+    width:90%;
+}
+
+.signUpBtn{
+    position: relative;
+    display: block;
+    left:220px;
+    width: 80px;
+    background-color: rgba(15, 25, 27, 0.171);
+    border-radius: 5px;
+    
+}
+
+.signUpBtn a{
+    display: block;
+    width: 80px;
+    height: 26px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    color:gray;
+    padding-top: 5px;
+    margin: 12px 0px 0px 0px;
+}
+
+.signUpFooter{
+    position: relative;
+    color:gray;
+}
+
+.signUpFooter a{
+    color: gray;
+}
