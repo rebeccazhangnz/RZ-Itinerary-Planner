@@ -12,11 +12,52 @@
     <link href="https://fonts.googleapis.com/css?family=Staatliches|Stardos+Stencil" rel="stylesheet">
 </head>
 
-<body class='signupbg'>
+<body class='itineraryPage'>
     <div class="logout">
-                <a href="/">Logout</a>
+        <a href="/">Logout</a>
+    </div>
+    <p class="userInfo">Hi! {{user}}</p>
+    <p class="userInfo">Email: {{email}}</p>
+    <div class="savedItinerary">
+        <h3>Saved Itineraries</h3>
+        <li>Los Angelos Trip</li>
+        <li>London Trip</li>
+        <li>Europe</li>
+    </div>
+
+
+    <form class="itineraryEditor">
+        <div class="addItinerary">
+            <input type="text" name="ItineraryTitle" value="title">
+            <button>Create New Itinerary</button>
+        </div>
+        <div class="addEvents">
+            <div><span>Date:</span> <input type="text" name="date" placeholder="Enter Date eg. 20190101"></div>
+            <div><span>Location:</span> <input type="text" name="location" placeholder="Enter Location"></div>
+            <div><span>Event: </span> <input type="text" name="event" placeholder="Enter Event"><button>Add</button>
             </div>
-    <nav>{{user}} : Itinerary</nav>
+
+        </div>
+    </form>
+    <div class="fakeApi"><iframe width="600" height="280"
+            src="https://maps.google.com/maps?width=100%&amp;height=300&amp;hl=en&amp;coord=-36.85904025,174.7759861615163&amp;q=Auckland%20Domain+(Auckland%20Domain)&amp;ie=UTF8&amp;t=&amp;z=14&amp;iwloc=B&amp;output=embed"
+            frameborder="0" scrolling="no" marginheight="0" marginwidth="0"><a
+                href="https://www.maps.ie/map-my-route/">Plot a route map</a></iframe></div>
+
+    <div class="itineraryLists">
+        <div class="itineraryName">{{title}}</div>
+
+        <div class="eventsLists">
+            {{#each info}}
+            <li>
+                <span>{{this.date}}</span>
+                <span>{{this.location}}</span>
+                <p class="event">{{this.event}}</p>
+                <button class="deleteBtn">Delete</button>
+            </li>
+            {{/each}}
+        </div>
+    </div>
 </body>
 
 </html>
