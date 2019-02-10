@@ -1,6 +1,7 @@
 const express = require('express')
-const db = require('../db/db')
 const router = express.Router()
+const db = require('../db/db')
+
 
 router.get('/', (req, res) => {
   res.render('index')
@@ -8,17 +9,21 @@ router.get('/', (req, res) => {
 
 router.get('/userHome/:user', (req, res) => {
   let userName = req.params.user
-  let data = {
-    user: userName,
-    title: 'testing Trip',
-    email: `${userName}@travelpod.com`,
-    info: [
-      { date: '20190304', location: 'Auckland', event: 'SkyTower' },
-      { date: '20190305', location: 'Rotorua', event: 'Zipline' },
-      { date: '20190306', location: 'Taupo', event: 'Huka Falls' }
-    ]
-  }
-  res.render('itinerary', data)
+  db.getUserData(userName)
+    .then(console.log)
+    //.catch((err)=>{res.send('Profile not found')})
+  // let data = {
+  //   user: userName,
+  //   title: 'testing Trip',
+  //   email: `${userName}@travelpod.com`,
+  //   info: [
+  //     { date: '20190304', location: 'Auckland', event: 'SkyTower' },
+  //     { date: '20190305', location: 'Rotorua', event: 'Zipline' },
+  //     { date: '20190306', location: 'Taupo', event: 'Huka Falls' }
+  //   ]
+  // }
+
+ // res.render('itinerary', data)
 })
 
 router.post('/userHome/:user', (req, res) => {
