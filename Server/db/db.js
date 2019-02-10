@@ -4,12 +4,13 @@ const db = require('knex')(development)
 module.exports={
     getUserData,
     signUp,
-    addUserProfile
+    addUserProfile,
+    getItineraries,
+    getEvents
 }
 
 function getUserData(userName){
    return db('users')
-    .join('itineraries','users.username', 'itineraries.user')
     .where('username', userName)
     .select()
     .first()
@@ -21,6 +22,18 @@ function signUp(newUser,newPW,newEmail){
 }
 
 function addUserProfile(newUser){
-    return db('itineraries')
+    return db('itineraryList')
     .insert({user: newUser})
+}
+
+function getItineraries(username){
+    return db('itineraryList')
+    .where('user', username)
+    .select('title')
+}
+
+function getEvents(title){
+    return db('itineraries')
+    .where('title',title)
+    .orderBy('date')
 }
