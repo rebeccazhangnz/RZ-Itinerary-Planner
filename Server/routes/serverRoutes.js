@@ -2,7 +2,6 @@ const express = require('express')
 const router = express.Router()
 const db = require('../db/db')
 
-
 router.get('/', (req, res) => {
   res.render('index')
 })
@@ -10,40 +9,41 @@ router.get('/', (req, res) => {
 router.get('/userHome/:user', (req, res) => {
   let userName = req.params.user
   db.getUserData(userName)
-    .then(console.log)
-    //.catch((err)=>{res.send('Profile not found')})
-  // let data = {
-  //   user: userName,
-  //   title: 'testing Trip',
-  //   email: `${userName}@travelpod.com`,
-  //   info: [
-  //     { date: '20190304', location: 'Auckland', event: 'SkyTower' },
-  //     { date: '20190305', location: 'Rotorua', event: 'Zipline' },
-  //     { date: '20190306', location: 'Taupo', event: 'Huka Falls' }
-  //   ]
-  // }
-
- // res.render('itinerary', data)
+    .then(data => {
+      res.render('itinerary', data)
+    })
+    .catch(err => {res.status(500).send('Fail to load the Page')})
 })
 
 router.post('/userHome/:user', (req, res) => {
   console.log('added')
 })
 
-router.get('/signin', (req, res) => {
-  res.render('signin')
-})
-
-router.post('/signin', (req, res) => {
-  res.send('this is signin')
-})
 
 router.get('/signup', (req, res) => {
   res.render('signup')
 })
 
-router.post('/signin', (req, res) => {
-  res.send('this is signup')
+router.post('/signup', (req, res) => {
+  const newUser = req.body.username
+  const newPassword = req.body.userPW
+  const newEmail = req.body.userEmail
+  db.signUp(newUser,newPassword,newEmail)
+    .then(()=>db.addUserProfile(newUser))
+    .then(()=>res.redirect('/signin'))
+    .catch(err => {res.status(500).send('Fail to load the Page')})
 })
+
+
+router.get('/signin', (req, res) => {
+  res.render('signin')
+})
+
+router.post('/signin', (req, res) => {
+  const user = req.body.username
+  res.redirect(`/userHome/${user}`)
+})
+
+
 
 module.exports = router

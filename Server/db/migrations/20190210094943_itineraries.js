@@ -5,7 +5,7 @@ exports.up = (knex, Promise) => {
       table.string('title')
       table.integer('date')
       table.string('location')
-      table.string('events')
+      table.string('event')
 
     })
   }

@@ -15,7 +15,7 @@
 <body class="signUpPage">
     <div class="signUpWrapper">
         <h2 class="signUpHeader">Sign Up</h2>
-        <form class="signUpForm">
+        <form class="signUpForm" method ="POST" action="/signup">
             <div class="inputDiv">
                 <p>Username:</p>
                 <input type="text" name="username">
@@ -33,7 +33,8 @@
                 <input type="email" name="userEmail">
             </div>
               <div class="signUpBtn">
-                <a href="/userHome/testing">Sign Up</a>
+                  <input type="submit" value = "Sign Up">
+                {{!-- <a href="/userHome/testing">Sign Up</a> --}}
             </div>
            
             <p class="signUpFooter">Already have an Account? <a href="/signin">Sign In</a></p>

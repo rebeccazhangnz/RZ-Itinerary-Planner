@@ -15,7 +15,7 @@
 <body class="signInPage">
     <div class="signInWrapper">
         <h2 class="signInHeader">Sign In</h2>
-        <form class="signInForm">
+        <form class="signInForm" method="POST" action="/signin">
             <div class="inputDiv">
                 <p>Username:</p>
                 <input type="text" name="username">
@@ -25,7 +25,7 @@
                 <input type="password" name="userPW">
             </div>
               <div class="signInBtn">
-                <a href="/userHome/testing">Sign In</a>
+                <input type="submit" value = "Sign In">
             </div>
             
             <div class="pwOption">
