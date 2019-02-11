@@ -424,3 +424,25 @@
     border-radius: 3px;
     background-color: rgba(0, 0, 0, 0.164)
 }
+
+.deleteEvent{
+  background-color: rgba(0, 0, 0, 0);
+  border-radius: 3px;
+  text-align: center;
+
+}
+
+.deleteBtn{
+  text-align: center;
+  width: 70px;
+  height: 40px;
+  border-radius: 3px;
+  background-color: transparent;
+}
+
+.userNameStupidWay{
+  background-color: transparent;
+  color: transparent;
+  border-style: none;
+  text-decoration: none;
+}

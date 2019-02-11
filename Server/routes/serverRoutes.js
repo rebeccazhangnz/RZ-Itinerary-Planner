@@ -2,13 +2,20 @@ const express = require('express')
 const router = express.Router()
 const db = require('../db/db')
 
+// router.get('/',(req,res)=>{
+//   db.getEvents('Bali Vocation')
+//     .then(console.log)
+// })
+
+
+
 router.get('/', (req, res) => {
   res.render('index')
 })
 
 router.get('/userHome/:user', (req, res) => {
-  let userName = req.params.user
-  db.getUserData(userName)
+  let username = req.params.user
+  db.getUserData(username)
     .then(userDetails => {
       db.getItineraries(userDetails.username).then(itineraryList => {
         res.render('itinerary', { user: userDetails, list: itineraryList })
@@ -25,8 +32,8 @@ router.get('/userHome/:user/:title', (req, res) => {
   db.getUserData(userName)
     .then(userDetails => {
       db.getItineraries(userDetails.username).then(itineraryList => {
-        db.getEvents(title).then(events => {
-          console.log(events)
+        db.getEvents(title)
+        .then(events => {
           res.render('itinerary', {
             user: userDetails,
             list: itineraryList,
@@ -42,7 +49,26 @@ router.get('/userHome/:user/:title', (req, res) => {
 })
 
 router.post('/userHome/:user', (req, res) => {
-  console.log('added')
+  const username = req.body.user
+  const newTitle = req.body.itineraryTitle
+  db.addNewTitle(username, newTitle)
+     .then(() =>
+    res.redirect(`/userHome/${username}`))
+    .catch(err => {
+      res.status(500).send('Fail to load the Page')
+    })
+})
+
+
+router.post('/userHome/:user/:title', (req, res) => {
+  const newEventInfo = req.body
+  
+  db.addNewEvent(newEventInfo)
+     .then(() =>
+      res.redirect(`/userHome/${newEventInfo.user}/${newEventInfo.title}`))
+    .catch(err => {
+      res.status(500).send('Fail to load the Page')
+    })
 })
 
 router.get('/signup', (req, res) => {
@@ -54,7 +80,6 @@ router.post('/signup', (req, res) => {
   const newPassword = req.body.userPW
   const newEmail = req.body.userEmail
   db.signUp(newUser, newPassword, newEmail)
-    .then(() => db.addUserProfile(newUser))
     .then(() => res.redirect('/signin'))
     .catch(err => {
       res.status(500).send('Fail to load the Page')
@@ -69,5 +94,7 @@ router.post('/signin', (req, res) => {
   const user = req.body.username
   res.redirect(`/userHome/${user}`)
 })
+
+
 
 module.exports = router

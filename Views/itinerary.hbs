@@ -10,6 +10,13 @@
     <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Abril+Fatface|Alfa+Slab+One|Archivo+Black" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Staatliches|Stardos+Stencil" rel="stylesheet">
+    <script src="/Server/routes/serverRoutes.js"></script>
+    <script>
+        function deleteEvent() {
+            console.log('deleted')
+        }
+    </script>
+
 </head>
 
 <body class='itineraryPage'>
@@ -21,24 +28,32 @@
     <div class="savedItinerary">
         <h3>Saved Itineraries</h3>
         {{#each list}}
-        <li> <a href='/userHome/Bill/{{this.title}}'>{{this.title}}</a></li>
+        <li> <a href='/userHome/{{this.user}}/{{this.title}}'>{{this.title}}</a></li>
         {{/each}}
     </div>
 
 
-    <form class="itineraryEditor">
+    <div class="itineraryEditor">
         <div class="addItinerary">
-            <input type="text" name="ItineraryTitle" value="title">
-            <button>Create New Itinerary</button>
+            <form method="POST" action='/userHome/:user'>
+                <input type="text" name="itineraryTitle" value="title">
+                <input class="userNameStupidWay" name='user' value={{user.username}}>
+                <button>Create New Itinerary</button>
+            </form>
         </div>
-        <div class="addEvents">
-            <div><span>Date:</span> <input type="text" name="date" placeholder="Enter Date eg. 20190101"></div>
-            <div><span>Location:</span> <input type="text" name="location" placeholder="Enter Location"></div>
-            <div><span>Event: </span> <input type="text" name="event" placeholder="Enter Event"><button>Add</button>
-            </div>
 
+        <div class="addEvents">
+            <form method="POST" action='/userHome/:user/:title'>
+                <div><span>Date:</span> <input type="text" name="date" placeholder="Enter Date eg. 20190101"></div>
+                <div><span>Location:</span> <input type="text" name="location" placeholder="Enter Location"></div>
+                <div><span>Event: </span> <input type="text" name="event" placeholder="Enter Event"><button>Add</button>
+                </div>
+                <input class="userNameStupidWay" name='user' value={{user.username}}>
+                <input class="userNameStupidWay" name='title' value="{{title}}">
+            </form>
         </div>
-    </form>
+
+    </div>
     <div class="fakeApi"><iframe width="600" height="280"
             src="https://maps.google.com/maps?width=100%&amp;height=300&amp;hl=en&amp;coord=-36.85904025,174.7759861615163&amp;q=Auckland%20Domain+(Auckland%20Domain)&amp;ie=UTF8&amp;t=&amp;z=14&amp;iwloc=B&amp;output=embed"
             frameborder="0" scrolling="no" marginheight="0" marginwidth="0"><a
@@ -46,14 +61,13 @@
 
     <div class="itineraryLists">
         <div class="itineraryName">{{title}}</div>
-
         <div class="eventsLists">
             {{#each events}}
-            <li>
+            <li class="{{this.id}}">
                 <span>{{this.date}}</span>
                 <span>{{this.location}}</span>
                 <p class="event">{{this.event}}</p>
-                <button class="deleteBtn">Delete</button>
+                <button class="deleteBtn {{this.id}}" onclick="deleteEvent();">Delete</button>
             </li>
             {{/each}}
         </div>

@@ -6,7 +6,9 @@ module.exports={
     signUp,
     addUserProfile,
     getItineraries,
-    getEvents
+    getEvents,
+    addNewTitle,
+    addNewEvent
 }
 
 function getUserData(userName){
@@ -29,11 +31,26 @@ function addUserProfile(newUser){
 function getItineraries(username){
     return db('itineraryList')
     .where('user', username)
-    .select('title')
+    .select()
 }
 
 function getEvents(title){
     return db('itineraries')
-    .where('title',title)
+    .join('itineraryList', 'itineraries.title', 'itineraryList.title')
+    .where('itineraries.title',title)
     .orderBy('date')
 }
+
+function addNewTitle(username,newTitle){
+    return db('itineraryList')
+    .insert({user: username, title: newTitle})
+}
+
+function addNewEvent(newEventInfo) {
+    return db('itineraries').insert({
+      title: newEventInfo.title,
+      date: newEventInfo.date,
+      location: newEventInfo.location,
+      event: newEventInfo.event
+    })
+  }
