@@ -1,13 +1,8 @@
 const express = require('express')
 const router = express.Router()
 const db = require('../db/db')
-
-// router.get('/',(req,res)=>{
-//   db.getEvents('Bali Vocation')
-//     .then(console.log)
-// })
-
-
+var methodOverride = require('method-override')
+router.use(methodOverride('_method'))
 
 router.get('/', (req, res) => {
   res.render('index')
@@ -32,8 +27,7 @@ router.get('/userHome/:user/:title', (req, res) => {
   db.getUserData(userName)
     .then(userDetails => {
       db.getItineraries(userDetails.username).then(itineraryList => {
-        db.getEvents(title)
-        .then(events => {
+        db.getEvents(title).then(events => {
           res.render('itinerary', {
             user: userDetails,
             list: itineraryList,
@@ -52,23 +46,31 @@ router.post('/userHome/:user', (req, res) => {
   const username = req.body.user
   const newTitle = req.body.itineraryTitle
   db.addNewTitle(username, newTitle)
-     .then(() =>
-    res.redirect(`/userHome/${username}`))
+    .then(() => res.redirect(`/userHome/${username}`))
     .catch(err => {
       res.status(500).send('Fail to load the Page')
     })
 })
 
-
 router.post('/userHome/:user/:title', (req, res) => {
   const newEventInfo = req.body
-  
-  db.addNewEvent(newEventInfo)
-     .then(() =>
-      res.redirect(`/userHome/${newEventInfo.user}/${newEventInfo.title}`))
-    .catch(err => {
-      res.status(500).send('Fail to load the Page')
-    })
+  if (req.body.deleteEvent) {
+    db.deleteEvent(req.body.deleteEvent).then(() =>
+      res.redirect(`/userHome/${req.body.user}/${req.body.title}`)
+    )
+  } else if (req.body.deleteItry) {
+    db.deleteItinerary(req.body.deleteItry).then(() =>
+      res.redirect(`/userHome/${req.body.user}`)
+    )
+  } else {
+    db.addNewEvent(newEventInfo)
+      .then(() =>
+        res.redirect(`/userHome/${newEventInfo.user}/${newEventInfo.title}`)
+      )
+      .catch(err => {
+        res.status(500).send('Fail to load the Page')
+      })
+  }
 })
 
 router.get('/signup', (req, res) => {
@@ -94,7 +96,5 @@ router.post('/signin', (req, res) => {
   const user = req.body.username
   res.redirect(`/userHome/${user}`)
 })
-
-
 
 module.exports = router

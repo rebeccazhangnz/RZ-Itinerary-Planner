@@ -8,7 +8,9 @@ module.exports={
     getItineraries,
     getEvents,
     addNewTitle,
-    addNewEvent
+    addNewEvent,
+    deleteEvent,
+    deleteItinerary
 }
 
 function getUserData(userName){
@@ -54,3 +56,15 @@ function addNewEvent(newEventInfo) {
       event: newEventInfo.event
     })
   }
+
+function deleteEvent(event){
+    return db('itineraries')
+    .where('event', event)
+    .del()
+}
+
+function deleteItinerary(title){
+    return db('itineraryList')
+    .where('title', title)
+    .del()
+}
