@@ -121,6 +121,8 @@
 .signUpPage {
   background-image: url('/Images/signup-bg.jpg');
   background-size: 100vw 100vh;
+  -webkit-animation: fadein 2s; /* Safari, Chrome and Opera > 12.1 */
+  -moz-animation: fadein 2s; /* Firefox < 16 */
 }
 
 .signUpWrapper {
@@ -183,14 +185,16 @@
   border-radius: 5px;
 }
 
-.signUpBtn a {
+.signUpBtn input {
   display: block;
+  border-style: none;
+  border-radius: 3px;
   width: 80px;
   height: 26px;
   text-align: center;
-  text-decoration: none;
   font-size: 16px;
   color: gray;
+  background-color: rgba(128, 128, 128, 0.096);
   padding-top: 5px;
   margin: 12px 0px 0px 0px;
 }
@@ -209,6 +213,8 @@
 .signInPage {
   background-image: url('/Images/signUp-bg.jpg');
   background-size: 100vw 100vh;
+  -webkit-animation: fadein 2s; /* Safari, Chrome and Opera > 12.1 */
+  -moz-animation: fadein 2s; /* Firefox < 16 */
 }
 
 .signInWrapper {
@@ -246,14 +252,16 @@
   border-radius: 5px;
 }
 
-.signInBtn a {
+.signInBtn input {
   display: block;
+  border-style: none;
+  border-radius: 3px;
   width: 80px;
   height: 26px;
   text-align: center;
-  text-decoration: none;
   font-size: 16px;
   color: gray;
+  background-color: rgba(128, 128, 128, 0.096);
   padding-top: 5px;
   margin: 12px 0px 0px 0px;
 }
@@ -298,7 +306,7 @@
   position: fixed;
   left: 2vw;
   top: 60px;
-  width: 600px;
+  width: 500px;
   height: 150px;
   background-color: rgba(255, 255, 255, 0.6);
   border-radius: 8px;
@@ -307,19 +315,35 @@
 .savedItinerary h3 {
   position: relative;
   left: 10px;
+  margin: 5px 0px 10px 0px;
+}
+
+
+.savedItinerary form{
+  position: relative;
+  border-color: brown;
+  left: 10px;
+  width: 560px;
 }
 
 .savedItinerary li {
   position: relative;
   left: 10px;
+  width: 560px;
 }
+
+.savedItinerary li a{
+  display: inline-block;
+  width: 200px;
+}
+
 
 .itineraryEditor {
   position: fixed;
   left: 2vw;
   top: 230px;
-  width: 600px;
-  height: 200px;
+  width: 500px;
+  height: 150px;
   background-color: rgba(255, 255, 255, 0.6);
   border-radius: 8px;
 }
@@ -359,18 +383,18 @@
 .fakeApi {
   position: fixed;
   left: 2vw;
-  top: 450px;
-  width: 600px;
-  height: 280px;
+  top: 400px;
+  width: 500px;
+  height: 320px;
   border-radius: 8px;
   overflow: hidden;
 }
 
 .itineraryLists {
   position: fixed;
-  left: 50vw;
+  left: 40vw;
   top: 60px;
-  width: 600px;
+  width: 750px;
   height: 87vh;
   background-color: rgba(255, 255, 255, 0.6);
   border-radius: 8px;
@@ -398,7 +422,7 @@
 
 .eventsLists span{
     display: inline-block;
-    width:70px;
+    width:120px;
     line-height: 40px;
     border-radius: 3px;
     text-align: center;
@@ -408,9 +432,44 @@
 .eventsLists p{
     overflow-wrap: break-word;
     display: inline-block;
-    width:350px;
+    width:400px;
     color:red;
     line-height: 40px;
     border-radius: 3px;
     background-color: rgba(0, 0, 0, 0.164)
+}
+
+.deleteEvent{
+  background-color: rgba(0, 0, 0, 0);
+  border-radius: 3px;
+  text-align: center;
+
+}
+
+.deleteBtn{
+  text-align: center;
+  width: 70px;
+  height: 40px;
+  border-radius: 3px;
+  background-color: transparent;
+}
+
+.deleteItry{
+  display: inline-block;
+  text-align: center;
+  border-radius: 3px;
+  background-color: transparent;
+}
+
+.userNameStupidWay{
+  position: fixed;
+  background-color: transparent;
+  color: transparent;
+  border-style: none;
+  border-color: red;
+  border-width: 3px;
+  text-decoration: none;
+  display: fixed;
+  top:100vh;
+  left: 100vw;
 }
