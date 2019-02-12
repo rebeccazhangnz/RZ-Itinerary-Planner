@@ -10,7 +10,7 @@
     "knex": "knex",
     "dev": "nodemon index",
     "start": "node index",
-    "test": "jest",
+    "test": "jest --watch",
     "kill": "taskkill /f /im node.exe"
   },
   "dependencies": {

@@ -1,12 +1,16 @@
 const express = require('express')
-const router = express.Router()
+const router = express()
+//const router = express.Router()
 const db = require('../db/db')
 var methodOverride = require('method-override')
 router.use(methodOverride('_method'))
 
 router.get('/', (req, res) => {
-  res.render('index')
+  res.status(202).render('index')
 })
+
+
+
 
 router.get('/userHome/:user', (req, res) => {
   let username = req.params.user
