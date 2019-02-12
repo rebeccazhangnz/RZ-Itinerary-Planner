@@ -80,12 +80,37 @@ router.get('/signup', (req, res) => {
 router.post('/signup', (req, res) => {
   const newUser = req.body.username
   const newPassword = req.body.userPW
+  const confirmedPW = req.body.confirmUserPW
   const newEmail = req.body.userEmail
-  db.signUp(newUser, newPassword, newEmail)
-    .then(() => res.redirect('/signin'))
-    .catch(err => {
-      res.status(500).send('Fail to load the Page')
-    })
+
+  db.getPW(newUser).then(existingUser => {
+    if (
+      (newUser === '') |
+      (newPassword === '') |
+      (confirmedPW === '') |
+      (newEmail === '')
+    ) {
+      res.render('signup', {
+        validation: '*Input should not be empty, please fill out all fields.'
+      })
+    } else if (existingUser !== undefined) {
+      res.render('signup', {
+        validation: '*Username already exists.'
+      })
+    } else if (newPassword !== confirmedPW) {
+      res.render('signup', {
+        validation: '*Password not match, please check again.'
+      })
+    } else if (dfads) {
+      afsdfa
+    } else {
+      db.signUp(newUser, newPassword, newEmail)
+        .then(() => res.redirect('/signin'))
+        .catch(err => {
+          res.status(500).send('Fail to load the Page')
+        })
+    }
+  })
 })
 
 router.get('/signin', (req, res) => {
@@ -93,8 +118,22 @@ router.get('/signin', (req, res) => {
 })
 
 router.post('/signin', (req, res) => {
-  const user = req.body.username
-  res.redirect(`/userHome/${user}`)
+  const username = req.body.username
+  const password = req.body.userPW
+
+  db.getPW(username).then(PW => {
+    if ((username === '') | (password === '')) {
+      res.render('signin', {
+        validation: '*Username and Password must not be empty'
+      })
+    } else if (PW == undefined) {
+      res.render('signin', { validation: '*User not found' })
+    } else if (PW.password !== password) {
+      res.render('signin', { validation: '*Incorrect username or password' })
+    } else {
+      res.redirect(`/userHome/${username}`)
+    }
+  })
 })
 
 module.exports = router

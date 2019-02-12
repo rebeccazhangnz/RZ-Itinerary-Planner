@@ -10,7 +10,8 @@ module.exports={
     addNewTitle,
     addNewEvent,
     deleteEvent,
-    deleteItinerary
+    deleteItinerary,
+    getPW
 }
 
 function getUserData(userName){
@@ -68,3 +69,11 @@ function deleteItinerary(title){
     .where('title', title)
     .del()
 }
+
+function getPW(username){
+    return db('users')
+    .where('username', username)
+    .select('password')
+    .first()
+}
+
