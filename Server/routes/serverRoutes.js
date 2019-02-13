@@ -47,35 +47,43 @@ router.get('/userHome/:user/:title', (req, res) => {
 router.post('/userHome/:user', (req, res) => {
   const username = req.body.user
   const newTitle = req.body.itineraryTitle
+  if(req.body.city){
+    request
+    .get(
+      `api.openweathermap.org/data/2.5/weather?q=${req.body.city}&APPID=71b3d4084f471b95a805aacfd13ff61d&units=metric`
+    )
+    .then(data => {
+      data = {
+        city: data.body.name,
+        weather: data.body.weather[0].main,
+        description: data.body.weather[0].description,
+        icon: data.body.weather[0].icon,
+        degree: data.body.main.temp
+      }
+      //res.render('itinerary', data)
+      return data
+    }).then((data)=>{
+      db.getUserData(username)
+        .then(userDetails => {
+            db.getItineraries(userDetails.username).then(itineraryList => {
+        res.render('itinerary', { user: userDetails, list: itineraryList, weather: data })
+      })
+    })
+    })
+  }else{
   db.addNewTitle(username, newTitle)
     .then(() => res.redirect(`/userHome/${username}`))
     .catch(err => {
       res.status(500).send('Fail to load the Page')
     })
-})
+}})
 
 router.post('/userHome/:user/:title', (req, res) => {
   const newEventInfo = req.body
   if (req.body.deleteEvent) {
-    // db.deleteEvent(req.body.deleteEvent).then(() =>
-    //   res.redirect(`/userHome/${req.body.user}/${req.body.title}`)
-    // )
-    request
-      .get(
-        'api.openweathermap.org/data/2.5/weather?q=Auckland&APPID=71b3d4084f471b95a805aacfd13ff61d&units=metric'
-      )
-      // .then((data)=>(console.log(data.body.name, data.body.weather[0].main, data.body.weather[0].description, data.body.weather[0].icon, data.body.main.temp
-      //   )))
-      .then(data => {
-        let weatherInfo = {
-          city: data.body.name,
-          weather: data.body.weather[0].main,
-          description: data.body.weather[0].description,
-          icon: data.body.weather[0].icon,
-          degree: data.body.main.temp
-        }
-        res.render('itinerary', weatherInfo)
-      })
+    db.deleteEvent(req.body.deleteEvent).then(() =>
+      res.redirect(`/userHome/${req.body.user}/${req.body.title}`)
+    )
   } else if (req.body.deleteItry) {
     db.deleteItinerary(req.body.deleteItry).then(() =>
       res.redirect(`/userHome/${req.body.user}`)
