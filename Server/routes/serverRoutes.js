@@ -1,5 +1,6 @@
 const express = require('express')
 const router = express()
+const request = require('superagent')
 //const router = express.Router()
 const db = require('../db/db')
 var methodOverride = require('method-override')
@@ -8,9 +9,6 @@ router.use(methodOverride('_method'))
 router.get('/', (req, res) => {
   res.status(202).render('index')
 })
-
-
-
 
 router.get('/userHome/:user', (req, res) => {
   let username = req.params.user
@@ -59,9 +57,25 @@ router.post('/userHome/:user', (req, res) => {
 router.post('/userHome/:user/:title', (req, res) => {
   const newEventInfo = req.body
   if (req.body.deleteEvent) {
-    db.deleteEvent(req.body.deleteEvent).then(() =>
-      res.redirect(`/userHome/${req.body.user}/${req.body.title}`)
-    )
+    // db.deleteEvent(req.body.deleteEvent).then(() =>
+    //   res.redirect(`/userHome/${req.body.user}/${req.body.title}`)
+    // )
+    request
+      .get(
+        'api.openweathermap.org/data/2.5/weather?q=Auckland&APPID=71b3d4084f471b95a805aacfd13ff61d&units=metric'
+      )
+      // .then((data)=>(console.log(data.body.name, data.body.weather[0].main, data.body.weather[0].description, data.body.weather[0].icon, data.body.main.temp
+      //   )))
+      .then(data => {
+        let weatherInfo = {
+          city: data.body.name,
+          weather: data.body.weather[0].main,
+          description: data.body.weather[0].description,
+          icon: data.body.weather[0].icon,
+          degree: data.body.main.temp
+        }
+        res.render('itinerary', weatherInfo)
+      })
   } else if (req.body.deleteItry) {
     db.deleteItinerary(req.body.deleteItry).then(() =>
       res.redirect(`/userHome/${req.body.user}`)

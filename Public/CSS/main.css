@@ -63,7 +63,7 @@
   background-color: rgba(255, 255, 255, 0);
   color: gray;
   position: fixed;
-  width: 40vw;
+  width: 540px;
   left: 55vw;
   top: 45vh;
   -webkit-animation: fadein 3s; /* Safari, Chrome and Opera > 12.1 */
@@ -292,20 +292,34 @@
   overflow: scroll;
 }
 .userInfo {
-  margin: 3px 0px 3px 3px;
+  position: fixed;
   font-size: 16px;
   font-weight: 400;
+  left: 955px;
+  top: 35px;
+  width: 335px;
+  height: 150px;
+  background-color: rgba(255, 255, 255, 0.6);
+  border-radius: 8px;
 }
+
+.userInfo p{
+  position: relative;
+  top:5px;
+  margin: 8px 0px 3px 8px;
+}
+
 .logout {
-  position: fixed;
-  right: 1vw;
-  top: 1vh;
+position: relative;
+top:3px;
+left:280px;
+margin: 10px 8px 3px 0px;
 }
 
 .savedItinerary {
   position: fixed;
-  left: 2vw;
-  top: 60px;
+  left: 25px;
+  top: 35px;
   width: 500px;
   height: 150px;
   background-color: rgba(255, 255, 255, 0.6);
@@ -340,9 +354,9 @@
 
 .itineraryEditor {
   position: fixed;
-  left: 2vw;
-  top: 230px;
-  width: 500px;
+  left: 540px;
+  top: 35px;
+  width: 400px;
   height: 150px;
   background-color: rgba(255, 255, 255, 0.6);
   border-radius: 8px;
@@ -377,25 +391,46 @@
 
 .addEvents button {
   position: relative;
-  left: 80px;
+  left: 60px;
+}
+
+
+.weatherApi{
+    position: fixed;
+    left: 25px;
+    top: 205px;
+    width: 500px;
+    height: 165px;
+    background-color: rgba(255, 255, 255, 0.6);
+    border-radius: 8px;
+    
+}
+
+.weatherApi div{
+  margin: 8px 0px 15px 15px;
+}
+
+.weatherApi p{
+  margin: 8px 0px 8px 15px; 
 }
 
 .fakeApi {
   position: fixed;
-  left: 2vw;
-  top: 400px;
+  left: 25px;
+  top: 385px;
   width: 500px;
   height: 320px;
   border-radius: 8px;
   overflow: hidden;
 }
 
+
 .itineraryLists {
   position: fixed;
-  left: 40vw;
-  top: 60px;
+  left: 540px;
+  top: 205px;
   width: 750px;
-  height: 87vh;
+  height: 500px;
   background-color: rgba(255, 255, 255, 0.6);
   border-radius: 8px;
 }
