@@ -80,10 +80,44 @@ router.post('/userHome/:user', (req, res) => {
 
 router.post('/userHome/:user/:title', (req, res) => {
   const newEventInfo = req.body
+  const userName = req.body.user
+  const title = req.body.title
   if (req.body.deleteEvent) {
     db.deleteEvent(req.body.deleteEvent).then(() =>
       res.redirect(`/userHome/${req.body.user}/${req.body.title}`)
     )
+  }else if(req.body.city){
+    request
+    .get(
+      `api.openweathermap.org/data/2.5/weather?q=${req.body.city}&APPID=71b3d4084f471b95a805aacfd13ff61d&units=metric`
+    )
+    .then(data => {
+      data = {
+        city: data.body.name,
+        weather: data.body.weather[0].main,
+        description: data.body.weather[0].description,
+        icon: data.body.weather[0].icon,
+        degree: data.body.main.temp
+      }
+      //res.render('itinerary', data)
+      return data
+    })
+    .then((data)=>{
+      db.getUserData(userName)
+      .then(userDetails => {
+        db.getItineraries(userDetails.username).then(itineraryList => {
+          db.getEvents(title).then(events => {
+            res.render('itinerary', {
+              user: userDetails,
+              list: itineraryList,
+              title: title,
+              events: events,
+              weather: data
+            })
+          })
+        })
+      })
+    })
   } else if (req.body.deleteItry) {
     db.deleteItinerary(req.body.deleteItry).then(() =>
       res.redirect(`/userHome/${req.body.user}`)

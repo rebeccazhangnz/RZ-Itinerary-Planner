@@ -60,7 +60,7 @@
     </div>
 
     <div class="weatherApi">
-        <form method="POST" action="/userHome/{{user.username}}/"{{title}}"">
+        <form method="POST" action="/userHome/{{user.username}}/{{title}}">
             <div><span>Check Weather:</span> <input type="text" name="city" placeholder="Enter Location"><button>Add</button></div>
             <p>City: &emsp;  {{weather.city}}</p>
             <p>Weather: &emsp; {{weather.weather}}</p>
