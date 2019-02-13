@@ -60,13 +60,13 @@ function addNewEvent(newEventInfo) {
 
 function deleteEvent(event){
     return db('itineraries')
-    .where('event', event|undefined|''|null|'undefined')
+    .where('event', event)
     .del()
 }
 
 function deleteItinerary(title){
     return db('itineraryList')
-    .where('title', title|undefined|''|null|'undefined')
+    .where('title', title)
     .del()
 }
 

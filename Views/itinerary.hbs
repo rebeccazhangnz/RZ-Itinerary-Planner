@@ -61,14 +61,14 @@
 
     <div class="weatherApi">
         <form method="POST" action="/userHome/{{user.username}}/{{title}}">
-            <div><span>Check Weather:</span> <input type="text" name="city" placeholder="Enter Location"><button>Add</button></div>
+            <div><span>Check Weather:</span> <input type="text" name="location" placeholder="Enter Location"><button>Add</button></div>
             <p>City: &emsp;  {{weather.city}}</p>
             <p>Weather: &emsp; {{weather.weather}}</p>
             <p>Description: &emsp; {{weather.description}}<i class="weatherInfo.icon"></i></p>
             <p>Temperature:&emsp; {{weather.degree}} degree</p>
             <input class="userNameStupidWay" name='user' value="{{user.username}}">
              <input class="userNameStupidWay" name='title' value="{{title}}">
-            
+             <input class="userNameStupidWay" name='city' value="y">
         </form>
     </div>
 

@@ -47,10 +47,10 @@ router.get('/userHome/:user/:title', (req, res) => {
 router.post('/userHome/:user', (req, res) => {
   const username = req.body.user
   const newTitle = req.body.itineraryTitle
-  if(req.body.city){
+  if(req.body.city==='y'){
     request
     .get(
-      `api.openweathermap.org/data/2.5/weather?q=${req.body.city}&APPID=71b3d4084f471b95a805aacfd13ff61d&units=metric`
+      `api.openweathermap.org/data/2.5/weather?q=${req.body.location}&APPID=71b3d4084f471b95a805aacfd13ff61d&units=metric`
     )
     .then(data => {
       data = {
@@ -70,7 +70,11 @@ router.post('/userHome/:user', (req, res) => {
       })
     })
     })
-  }else{
+  }else if (req.body.deleteEvent) {
+    db.deleteEvent(req.body.deleteEvent).then(() =>
+      res.redirect(`/userHome/${req.body.user}`)
+    )}
+  else{
   db.addNewTitle(username, newTitle)
     .then(() => res.redirect(`/userHome/${username}`))
     .catch(err => {
@@ -82,14 +86,15 @@ router.post('/userHome/:user/:title', (req, res) => {
   const newEventInfo = req.body
   const userName = req.body.user
   const title = req.body.title
+
   if (req.body.deleteEvent) {
     db.deleteEvent(req.body.deleteEvent).then(() =>
       res.redirect(`/userHome/${req.body.user}/${req.body.title}`)
     )
-  }else if(req.body.city){
+  }else if(req.body.city ==='y'){
     request
     .get(
-      `api.openweathermap.org/data/2.5/weather?q=${req.body.city}&APPID=71b3d4084f471b95a805aacfd13ff61d&units=metric`
+      `api.openweathermap.org/data/2.5/weather?q=${req.body.location}&APPID=71b3d4084f471b95a805aacfd13ff61d&units=metric`
     )
     .then(data => {
       data = {
@@ -99,7 +104,7 @@ router.post('/userHome/:user/:title', (req, res) => {
         icon: data.body.weather[0].icon,
         degree: data.body.main.temp
       }
-      //res.render('itinerary', data)
+
       return data
     })
     .then((data)=>{
@@ -120,7 +125,8 @@ router.post('/userHome/:user/:title', (req, res) => {
     })
   } else if (req.body.deleteItry) {
     db.deleteItinerary(req.body.deleteItry).then(() =>
-      res.redirect(`/userHome/${req.body.user}`)
+       res.redirect(`/userHome/${req.body.user}`)
+      
     )
   } else {
     db.addNewEvent(newEventInfo)

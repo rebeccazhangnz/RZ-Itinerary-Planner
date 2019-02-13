@@ -299,7 +299,8 @@
   top: 35px;
   width: 335px;
   height: 150px;
-  background-color: rgba(255, 255, 255, 0.6);
+  background-color:rgba(17, 17, 17, 0.411);
+  color:#ddd;
   border-radius: 8px;
 }
 
@@ -322,7 +323,8 @@ margin: 10px 8px 3px 0px;
   top: 35px;
   width: 500px;
   height: 150px;
-  background-color: rgba(255, 255, 255, 0.6);
+  background-color:rgba(17, 17, 17, 0.411);;
+  color:#ddd;
   border-radius: 8px;
 }
 
@@ -358,7 +360,8 @@ margin: 10px 8px 3px 0px;
   top: 35px;
   width: 400px;
   height: 150px;
-  background-color: rgba(255, 255, 255, 0.6);
+  background-color:rgba(17, 17, 17, 0.411);
+  color:#ddd;
   border-radius: 8px;
 }
 .addItinerary {
@@ -401,7 +404,8 @@ margin: 10px 8px 3px 0px;
     top: 205px;
     width: 500px;
     height: 165px;
-    background-color: rgba(255, 255, 255, 0.6);
+    background-color:rgba(17, 17, 17, 0.411);
+    color:#ddd;
     border-radius: 8px;
     
 }
@@ -431,7 +435,8 @@ margin: 10px 8px 3px 0px;
   top: 205px;
   width: 750px;
   height: 500px;
-  background-color: rgba(255, 255, 255, 0.6);
+  background-color:rgba(17, 17, 17, 0.411);
+  color:#ddd;
   border-radius: 8px;
 }
 
@@ -452,7 +457,10 @@ margin: 10px 8px 3px 0px;
 .eventsLists li{
     list-style: none;
     height: 50px;
-    
+}
+
+.eventsLists li:focus{
+  box-shadow: 0 0 10px 4px #34495e;
 }
 
 .date{
@@ -461,25 +469,27 @@ margin: 10px 8px 3px 0px;
     line-height: 40px;
     border-radius: 3px;
     text-align: center;
-    background-color: rgba(0, 0, 0, 0.164)
+    background-color:rgba(17, 17, 17, 0.37);
 }
 .location{
   display: inline-block;
-    width:200px;
+    width:190px;
     line-height: 40px;
     border-radius: 3px;
     text-align: left;
-    background-color: rgba(0, 0, 0, 0.164)
+    background-color:rgba(17, 17, 17, 0.37);
 }
 
 .eventsLists p{
     overflow-wrap: break-word;
     display: inline-block;
     width:360px;
-    color:black;
+    color:#ddd;
     line-height: 40px;
     border-radius: 3px;
-    background-color: rgba(0, 0, 0, 0.164)
+    background-color:rgba(17, 17, 17, 0.37);
+    padding-left:6px;
+    
 }
 
 .deleteEvent{
@@ -495,6 +505,8 @@ margin: 10px 8px 3px 0px;
   height: 40px;
   border-radius: 3px;
   background-color: transparent;
+  border-color: rgb(88, 88, 88);
+  color:white;
 }
 
 .deleteItry{
@@ -502,6 +514,9 @@ margin: 10px 8px 3px 0px;
   text-align: center;
   border-radius: 3px;
   background-color: transparent;
+  border-width: 1px;
+  color:rgb(214, 214, 214);
+  border-color: rgb(88, 88, 88);
 }
 
 .userNameStupidWay{
@@ -515,4 +530,28 @@ margin: 10px 8px 3px 0px;
   display: fixed;
   top:100vh;
   left: 100vw;
+}
+
+input{
+  background-color: transparent;
+  border-width: 1px;
+  padding:2px;
+  border-color: rgb(124, 124, 124);
+}
+
+li a{
+  color: #ddd;
+}
+
+li a:visited{
+  color: gray;
+}
+
+button{
+  background-color: transparent;
+  border-width: 1px;
+  color:rgb(214, 214, 214);
+  border-color: rgb(122, 122, 122);
+  margin-left:6px;
+  border-radius: 3px;
 }
