@@ -84,8 +84,8 @@
             {{#each events}}
             <li>
                 <form method="POST" action="/userHome/:user/:title">
-                    <span>{{this.date}}</span>
-                    <span>{{this.location}}</span>
+                    <span class="date">{{this.date}}</span>
+                    <span class = "location">{{this.location}}</span>
                     <p class="event">{{this.event}}</p>
                     <button class="deleteBtn">Delete</button>
                     <input class="userNameStupidWay" name='deleteEvent' value="{{this.event}}">

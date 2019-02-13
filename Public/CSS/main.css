@@ -455,20 +455,28 @@ margin: 10px 8px 3px 0px;
     
 }
 
-.eventsLists span{
-    display: inline-block;
-    width:120px;
+.date{
+  display: inline-block;
+    width:80px;
     line-height: 40px;
     border-radius: 3px;
     text-align: center;
+    background-color: rgba(0, 0, 0, 0.164)
+}
+.location{
+  display: inline-block;
+    width:200px;
+    line-height: 40px;
+    border-radius: 3px;
+    text-align: left;
     background-color: rgba(0, 0, 0, 0.164)
 }
 
 .eventsLists p{
     overflow-wrap: break-word;
     display: inline-block;
-    width:400px;
-    color:red;
+    width:360px;
+    color:black;
     line-height: 40px;
     border-radius: 3px;
     background-color: rgba(0, 0, 0, 0.164)
