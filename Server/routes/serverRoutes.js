@@ -167,8 +167,6 @@ router.post('/signup', (req, res) => {
       res.render('signup', {
         validation: '*Password not match, please check again.'
       })
-    } else if (dfads) {
-      afsdfa
     } else {
       db.signUp(newUser, newPassword, newEmail)
         .then(() => res.redirect('/signin'))

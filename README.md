@@ -7,14 +7,14 @@ Build an itinerary planner App that allows user to create, modify, save and reca
 
 - To Create own boilerplate and understand each package that is being used
 - To be able to plan, structure and start coding from scratch without referencing to katas or other projects.
-- To be able to perfome server side rendering, routing and interating with database using express, knex and handlebars.
-- To be able to create intereactive/stateful components and client side routes using react
+- To be able to perfome server side rendering, routing and interacting with database using express, knex and handlebars.
+- To be able to create interactive/stateful components and client side routes using react
 - To be able to use external api and access external database
 
 ## Project-Preparation
 
 - Setup basic file structures (routes,public,tests...)
-- Create Boiler Plate
+- Create Boilerplate
 - Create HTML template (draft up ideas)
 - Setup database and Code Structure (MVC design pattern)
 

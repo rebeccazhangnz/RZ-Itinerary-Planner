@@ -315,6 +315,11 @@ position: relative;
 top:3px;
 left:280px;
 margin: 10px 8px 3px 0px;
+color: #ddd;
+}
+
+.logout:visited{
+  color:#ddd;
 }
 
 .savedItinerary {
@@ -554,4 +559,8 @@ button{
   border-color: rgb(122, 122, 122);
   margin-left:6px;
   border-radius: 3px;
+}
+
+.validation{
+  color: red;
 }
