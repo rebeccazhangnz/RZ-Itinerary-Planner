@@ -63,7 +63,7 @@
   background-color: rgba(255, 255, 255, 0);
   color: gray;
   position: fixed;
-  width: 40vw;
+  width: 540px;
   left: 55vw;
   top: 45vh;
   -webkit-animation: fadein 3s; /* Safari, Chrome and Opera > 12.1 */
@@ -130,7 +130,7 @@
   left: 37.5vw;
   top: 12.5vw;
   width: 350px;
-  height: 420px;
+  height: 480px;
   background-color: rgba(255, 255, 255, 0.349);
   border-radius: 8px;
 }
@@ -148,7 +148,7 @@
   position: relative;
   left: 30px;
   width: 300px;
-  height: 350px;
+  height: 400px;
 }
 
 .inputDiv {
@@ -292,23 +292,44 @@
   overflow: scroll;
 }
 .userInfo {
-  margin: 3px 0px 3px 3px;
+  position: fixed;
   font-size: 16px;
   font-weight: 400;
+  left: 955px;
+  top: 35px;
+  width: 335px;
+  height: 150px;
+  background-color:rgba(17, 17, 17, 0.411);
+  color:#ddd;
+  border-radius: 8px;
 }
+
+.userInfo p{
+  position: relative;
+  top:5px;
+  margin: 8px 0px 3px 8px;
+}
+
 .logout {
-  position: fixed;
-  right: 1vw;
-  top: 1vh;
+position: relative;
+top:3px;
+left:280px;
+margin: 10px 8px 3px 0px;
+color: #ddd;
+}
+
+.logout:visited{
+  color:#ddd;
 }
 
 .savedItinerary {
   position: fixed;
-  left: 2vw;
-  top: 60px;
+  left: 25px;
+  top: 35px;
   width: 500px;
   height: 150px;
-  background-color: rgba(255, 255, 255, 0.6);
+  background-color:rgba(17, 17, 17, 0.411);;
+  color:#ddd;
   border-radius: 8px;
 }
 
@@ -340,11 +361,12 @@
 
 .itineraryEditor {
   position: fixed;
-  left: 2vw;
-  top: 230px;
-  width: 500px;
+  left: 540px;
+  top: 35px;
+  width: 400px;
   height: 150px;
-  background-color: rgba(255, 255, 255, 0.6);
+  background-color:rgba(17, 17, 17, 0.411);
+  color:#ddd;
   border-radius: 8px;
 }
 .addItinerary {
@@ -377,26 +399,49 @@
 
 .addEvents button {
   position: relative;
-  left: 80px;
+  left: 60px;
+}
+
+
+.weatherApi{
+    position: fixed;
+    left: 25px;
+    top: 205px;
+    width: 500px;
+    height: 165px;
+    background-color:rgba(17, 17, 17, 0.411);
+    color:#ddd;
+    border-radius: 8px;
+    
+}
+
+.weatherApi div{
+  margin: 8px 0px 15px 15px;
+}
+
+.weatherApi p{
+  margin: 8px 0px 8px 15px; 
 }
 
 .fakeApi {
   position: fixed;
-  left: 2vw;
-  top: 400px;
+  left: 25px;
+  top: 385px;
   width: 500px;
   height: 320px;
   border-radius: 8px;
   overflow: hidden;
 }
 
+
 .itineraryLists {
   position: fixed;
-  left: 40vw;
-  top: 60px;
+  left: 540px;
+  top: 205px;
   width: 750px;
-  height: 87vh;
-  background-color: rgba(255, 255, 255, 0.6);
+  height: 500px;
+  background-color:rgba(17, 17, 17, 0.411);
+  color:#ddd;
   border-radius: 8px;
 }
 
@@ -417,26 +462,39 @@
 .eventsLists li{
     list-style: none;
     height: 50px;
-    
 }
 
-.eventsLists span{
-    display: inline-block;
-    width:120px;
+.eventsLists li:focus{
+  box-shadow: 0 0 10px 4px #34495e;
+}
+
+.date{
+  display: inline-block;
+    width:80px;
     line-height: 40px;
     border-radius: 3px;
     text-align: center;
-    background-color: rgba(0, 0, 0, 0.164)
+    background-color:rgba(17, 17, 17, 0.37);
+}
+.location{
+  display: inline-block;
+    width:190px;
+    line-height: 40px;
+    border-radius: 3px;
+    text-align: left;
+    background-color:rgba(17, 17, 17, 0.37);
 }
 
 .eventsLists p{
     overflow-wrap: break-word;
     display: inline-block;
-    width:400px;
-    color:red;
+    width:360px;
+    color:#ddd;
     line-height: 40px;
     border-radius: 3px;
-    background-color: rgba(0, 0, 0, 0.164)
+    background-color:rgba(17, 17, 17, 0.37);
+    padding-left:6px;
+    
 }
 
 .deleteEvent{
@@ -452,6 +510,8 @@
   height: 40px;
   border-radius: 3px;
   background-color: transparent;
+  border-color: rgb(88, 88, 88);
+  color:white;
 }
 
 .deleteItry{
@@ -459,6 +519,9 @@
   text-align: center;
   border-radius: 3px;
   background-color: transparent;
+  border-width: 1px;
+  color:rgb(214, 214, 214);
+  border-color: rgb(88, 88, 88);
 }
 
 .userNameStupidWay{
@@ -472,4 +535,32 @@
   display: fixed;
   top:100vh;
   left: 100vw;
+}
+
+input{
+  background-color: transparent;
+  border-width: 1px;
+  padding:2px;
+  border-color: rgb(124, 124, 124);
+}
+
+li a{
+  color: #ddd;
+}
+
+li a:visited{
+  color: gray;
+}
+
+button{
+  background-color: transparent;
+  border-width: 1px;
+  color:rgb(214, 214, 214);
+  border-color: rgb(122, 122, 122);
+  margin-left:6px;
+  border-radius: 3px;
+}
+
+.validation{
+  color: red;
 }

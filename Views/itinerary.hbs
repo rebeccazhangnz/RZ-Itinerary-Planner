@@ -14,11 +14,13 @@
 </head>
 
 <body class='itineraryPage'>
-    <div class="logout">
-        <a href="/">Logout</a>
+
+    <div class="userInfo">
+        <a class="logout" href="/">Logout</a>
+        <p>Hi! {{user.username}}</p>
+        <p>Email: {{user.email}}</p>
+
     </div>
-    <p class="userInfo">Hi! {{user.username}}</p>
-    <p class="userInfo">Email: {{user.email}}</p>
     <div class="savedItinerary">
 
         <h3>Saved Itineraries</h3>
@@ -27,7 +29,7 @@
             <li> <a href='/userHome/{{this.user}}/{{this.title}}'>{{this.title}}</a>
                 <button class="deleteItry">Delete</button>
                 <input class="userNameStupidWay" name='deleteItry' value="{{this.title}}">
-                <input class="userNameStupidWay" name='user' value="{{this.user}}">  
+                <input class="userNameStupidWay" name='user' value="{{this.user}}">
             </li>
         </form>
         {{/each}}
@@ -56,6 +58,21 @@
         </div>
 
     </div>
+
+    <div class="weatherApi">
+        <form method="POST" action="/userHome/{{user.username}}/{{title}}">
+            <div><span>Check Weather:</span> <input type="text" name="location" placeholder="Enter Location"><button>Add</button></div>
+            <p>City: &emsp;  {{weather.city}}</p>
+            <p>Weather: &emsp; {{weather.weather}}</p>
+            <p>Description: &emsp; {{weather.description}}<i class="weatherInfo.icon"></i></p>
+            <p>Temperature:&emsp; {{weather.degree}} degree</p>
+            <input class="userNameStupidWay" name='user' value="{{user.username}}">
+             <input class="userNameStupidWay" name='title' value="{{title}}">
+             <input class="userNameStupidWay" name='city' value="y">
+        </form>
+    </div>
+
+
     <div class="fakeApi"><iframe width="500" height="320"
             src="https://maps.google.com/maps?width=100%&amp;height=300&amp;hl=en&amp;coord=-36.85904025,174.7759861615163&amp;q=Auckland%20Domain+(Auckland%20Domain)&amp;ie=UTF8&amp;t=&amp;z=14&amp;iwloc=B&amp;output=embed"
             frameborder="0" scrolling="no" marginheight="0" marginwidth="0"><a
@@ -67,8 +84,8 @@
             {{#each events}}
             <li>
                 <form method="POST" action="/userHome/:user/:title">
-                    <span>{{this.date}}</span>
-                    <span>{{this.location}}</span>
+                    <span class="date">{{this.date}}</span>
+                    <span class = "location">{{this.location}}</span>
                     <p class="event">{{this.event}}</p>
                     <button class="deleteBtn">Delete</button>
                     <input class="userNameStupidWay" name='deleteEvent' value="{{this.event}}">
