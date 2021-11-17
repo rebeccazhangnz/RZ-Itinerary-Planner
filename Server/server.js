@@ -1,5 +1,5 @@
 const express = require('express')
-const hbs = require('express-handlebars')
+const { engine } = require('express-handlebars')
 
 const serverRoutes = require('./routes/serverRoutes')
 
@@ -7,8 +7,8 @@ const server = express()
 
 // Middleware
 
-server.engine('hbs', hbs({extname: 'hbs'}))
-server.set('view engine', 'hbs')
+server.engine('handlebars', engine());
+server.set('view engine', 'handlebars');
 server.use(express.static('public'))
 server.use(express.urlencoded({extended: true}))
 
